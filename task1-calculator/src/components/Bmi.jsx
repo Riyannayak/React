@@ -5,35 +5,37 @@ function BmiCalculator() {
   const [height, setHeight] = useState('');
   const [bmi, setBmi] = useState('');
   const [category, setCategory] = useState('');
+  const bmiCategory = (bmi) => {
+    // console.log(`BMI: ${bmi}`);
+    if (bmi < 18.5) {
+        return 'Underweight';
+    } else if (bmi >= 18.5 && bmi <= 24.9) {
+        return 'Normal weight';
+    } else if (bmi >= 25 && bmi <= 29.9) {
+        return 'Overweight';
+    } else {
+        return 'Obesity';
+    }
+};
 
   const calculateBmi = () => {
     if (weight && height) {
       const heightInMeters = height / 100;
       const bmiValue = (weight / (heightInMeters * heightInMeters));
       setBmi(bmiValue);
-      setCategory(getBmiCategory(bmiValue));
+      // let c = 
+      // console.log(c)
+      setCategory(bmiCategory(bmiValue));
+      // console.log(category);
     }
   };
 
-  const Bmi= () => {
-    const h = height / 100;
-    const bmi = weight / (h * h)
-    setBmi(bmi);
-    if (bmi < 18) {
-        setStatus('Underweight')
-    } else if (bmi >= 18 && bmi <= 24) {
-        setStatus('Normal weight')
-    } else if (bmi >= 25 && bmi <= 29) {
-        setStatus('Overweight')
-    } else if (bmi >= 30) {
-        setStatus('Obesity')
-    }
-}
+
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4">
       <div className="  p-8 w-full max-w-md">
-       
+
 
         <input
           type="number"
@@ -60,7 +62,7 @@ function BmiCalculator() {
 
         {bmi && (
           <div className="mt-6 text-center">
-            <p className="text-xl font-semibold">Your BMI: {bmi}</p>
+            <p className="text-xl font-semibold">Your BMI: {bmi.toFixed(2)}</p>
             <p className="text-lg mt-2 text-gray-700">Category: {category}</p>
           </div>
         )}
