@@ -1,0 +1,14 @@
+.card-container{
+    width: 300px;
+    overflow: hidden;
+    box-shadow: opx 0px 15px 0px;
+}
+.card-container:hover{
+    transform: scale(1.1);
+    box-shadow: opx 0px 15px 0px;
+
+}
+.image-container img{
+    overflow: hidden;
+   height: 200px;
+}
